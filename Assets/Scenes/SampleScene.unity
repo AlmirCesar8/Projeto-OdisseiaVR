@@ -146,7 +146,7 @@ RectTransform:
   m_GameObject: {fileID: 4350269}
   m_LocalRotation: {x: 0, y: -0.06975647, z: 0, w: 0.9975641}
   m_LocalPosition: {x: 0, y: 0, z: 57.54}
-  m_LocalScale: {x: 0.5, y: 10, z: 5}
+  m_LocalScale: {x: 0.3, y: 10, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1113376840}
@@ -418,7 +418,7 @@ RectTransform:
   m_GameObject: {fileID: 220028050}
   m_LocalRotation: {x: 0, y: -0.06975647, z: 0, w: 0.9975641}
   m_LocalPosition: {x: 0, y: 0, z: -0.054}
-  m_LocalScale: {x: 0.5, y: 10, z: 5}
+  m_LocalScale: {x: 0.3, y: 10, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1898967205}
@@ -1093,7 +1093,7 @@ RectTransform:
   m_GameObject: {fileID: 481213902}
   m_LocalRotation: {x: 0, y: -0.06975647, z: 0, w: 0.9975641}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 10, z: 5}
+  m_LocalScale: {x: 0.3, y: 10, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1456821111}
@@ -1575,7 +1575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -285, y: 207.99997}
+  m_AnchoredPosition: {x: -800, y: 207.99997}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &625145172
@@ -3534,6 +3534,14 @@ PrefabInstance:
       propertyPath: m_MoveSpeed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 153982007679157697, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_LeftHandMovementDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 153982007679157697, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_RightHandMovementDirection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503725, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)
@@ -3588,6 +3596,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5167925059111895691, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663893676086941514, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_Turn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663893676086941514, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_TeleportMode
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663893676086941514, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_TeleportModeCancel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663893676086941514, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_SmoothMotionEnabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4154,7 +4178,7 @@ RectTransform:
   m_GameObject: {fileID: 2118253503}
   m_LocalRotation: {x: 0, y: -0.06975647, z: 0, w: 0.9975641}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 10, z: 5}
+  m_LocalScale: {x: 0.3, y: 10, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1681186072}
