@@ -4237,13 +4237,13 @@ MonoBehaviour:
   incorrectColor: {r: 1, g: 0.1997765, b: 0.103773475, a: 1}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   feedbackDelay: 1.5
-  locationVictorySound: {fileID: 8300000, guid: c0f332d8f8305934fb837403a0d08623, type: 3}
+  locationVictorySound: {fileID: 8300000, guid: 5b60df24c001b254297272406e46bdbc, type: 3}
   waitOnBlackScreenDelay: 1
-  fadeDuration: 0.8
+  fadeDuration: 2
   backgroundMusicVolume: 0.5
   sfxVolume: 1
-  correctAnswerSound: {fileID: 8300000, guid: db514636fa4174745a779c956bf7beca, type: 3}
-  incorrectAnswerSound: {fileID: 8300000, guid: 751c6dac4f6956646807dddd50e305af, type: 3}
+  correctAnswerSound: {fileID: 8300000, guid: 781b23ab90125464683119158df79613, type: 3}
+  incorrectAnswerSound: {fileID: 8300000, guid: 0f968be12522aa147beabdb4c43064e1, type: 3}
 --- !u!82 &2079185405
 AudioSource:
   m_ObjectHideFlags: 0
