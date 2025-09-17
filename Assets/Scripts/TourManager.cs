@@ -56,7 +56,7 @@ public class TourManager : MonoBehaviour
     public Renderer panoramaSphereRenderer;
     public TextMeshProUGUI questionTextUI;
     public List<Button> answerButtons;
-    public Image fadeScreen; // NOVO: Referência para a imagem de fade
+    public Image fadeScreen; 
 
     [Header("Configurações de Feedback")]
     public Color correctColor = new Color(0.1f, 0.7f, 0.2f);
@@ -66,12 +66,12 @@ public class TourManager : MonoBehaviour
 
     [Header("Configurações de Transição de Local")]
     public AudioClip locationVictorySound;
-    public float waitOnBlackScreenDelay = 1.0f; // MODIFICADO: Nome mais claro para o delay
-    public float fadeDuration = 0.8f;          // NOVO: Duração do efeito de fade
+    public float waitOnBlackScreenDelay = 1.0f; 
+    public float fadeDuration = 0.8f;          
 
     [Header("Configurações de Áudio")]
-    [Range(0f, 1f)] public float backgroundMusicVolume = 0.5f; // NOVO: Controle de volume da música
-    [Range(0f, 1f)] public float sfxVolume = 1.0f;             // NOVO: Controle de volume dos efeitos sonoros
+    [Range(0f, 1f)] public float backgroundMusicVolume = 0.5f; 
+    [Range(0f, 1f)] public float sfxVolume = 1.0f;             
     public AudioClip correctAnswerSound;
     public AudioClip incorrectAnswerSound;
     
@@ -85,16 +85,16 @@ public class TourManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         
-        // NOVO: Garante que a tela de fade comece transparente
-        if (fadeScreen != null) {
-            Color tempColor = fadeScreen.color;
-            tempColor.a = 0;
-            fadeScreen.color = tempColor;
-        } else {
+        if (fadeScreen == null) {
              Debug.LogError("ERRO CRÍTICO: A 'Fade Screen' não foi atribuída no Inspector!");
              enabled = false;
              return;
         }
+        
+        // Garante que a tela comece transparente, independentemente do seu estado no Editor
+        Color tempColor = fadeScreen.color;
+        tempColor.a = 0;
+        fadeScreen.color = tempColor;
 
         LoadTourDataFromJSON();
 
@@ -108,7 +108,7 @@ public class TourManager : MonoBehaviour
 
         if (locais.Count > 0)
         {
-            StartCoroutine(TransitionToLocal(currentLocalIndex, true)); // MODIFICADO: Inicia com uma transição
+            StartCoroutine(TransitionToLocal(currentLocalIndex, true));
         }
     }
 
@@ -125,19 +125,23 @@ public class TourManager : MonoBehaviour
 
         foreach (var localJson in dataFromJson.locais)
         {
-            DadosLocal novoLocal = new DadosLocal();
-            novoLocal.locationName = localJson.locationName;
-            novoLocal.backgroundMusic = Resources.Load<AudioClip>(localJson.backgroundMusicPath);
-            novoLocal.desafios = new List<Desafio>();
+            DadosLocal novoLocal = new DadosLocal
+            {
+                locationName = localJson.locationName,
+                backgroundMusic = Resources.Load<AudioClip>(localJson.backgroundMusicPath),
+                desafios = new List<Desafio>()
+            };
 
             foreach(var desafioJson in localJson.desafios)
             {
-                Desafio novoDesafio = new Desafio();
-                novoDesafio.panoramaMaterial = Resources.Load<Material>(desafioJson.panoramaMaterialPath);
-                novoDesafio.initialYRotation = desafioJson.initialYRotation;
-                novoDesafio.questionText = desafioJson.questionText;
-                novoDesafio.answers = desafioJson.answers;
-                novoDesafio.correctAnswerIndex = desafioJson.correctAnswerIndex;
+                Desafio novoDesafio = new Desafio
+                {
+                    panoramaMaterial = Resources.Load<Material>(desafioJson.panoramaMaterialPath),
+                    initialYRotation = desafioJson.initialYRotation,
+                    questionText = desafioJson.questionText,
+                    answers = desafioJson.answers,
+                    correctAnswerIndex = desafioJson.correctAnswerIndex
+                };
                 novoLocal.desafios.Add(novoDesafio);
 
                 if (novoDesafio.panoramaMaterial == null) 
@@ -151,7 +155,7 @@ public class TourManager : MonoBehaviour
         }
     }
 
-    void CarregarDadosDoLocal(int localIndex) // MODIFICADO: Função para apenas carregar os dados, sem transição
+    void CarregarDadosDoLocal(int localIndex)
     {
         if(locais.Count == 0 || localIndex >= locais.Count) {
              Debug.LogError("Tentativa de carregar um local inválido.");
@@ -163,7 +167,7 @@ public class TourManager : MonoBehaviour
         if (locais[currentLocalIndex].backgroundMusic != null)
         {
             audioSource.clip = locais[currentLocalIndex].backgroundMusic;
-            audioSource.volume = backgroundMusicVolume; // MODIFICADO: Aplica o volume
+            audioSource.volume = backgroundMusicVolume;
             audioSource.loop = true;
             audioSource.Play();
         } else {
@@ -200,7 +204,7 @@ public class TourManager : MonoBehaviour
     public void CheckAnswer(int selectedIndex)
     {
         if (isAnswering) return;
-        isAnswering = true; // MODIFICADO: trava a resposta aqui
+        isAnswering = true; 
 
         Desafio desafioAtual = locais[currentLocalIndex].desafios[currentDesafioIndex];
         for(int i = 0; i < desafioAtual.answers.Count; i++) {
@@ -217,55 +221,75 @@ public class TourManager : MonoBehaviour
         }
     }
     
-    // NOVO: Corrotina para controlar o fade
-    private IEnumerator FadeCoroutine(float targetAlpha) {
+    // --- REATORAÇÃO (Refactoring) ---
+    // NOVO: Corrotina dedicada a escurecer a tela (Fade Out) de forma determinística.
+    private IEnumerator FadeOut() {
         Color currentColor = fadeScreen.color;
-        float startAlpha = currentColor.a;
+        float startAlpha = 0f; // MODIFICADO: Força o início a ser transparente
+        float targetAlpha = 1f;
         float timer = 0f;
 
         while (timer < fadeDuration) {
             timer += Time.deltaTime;
-            float progress = timer / fadeDuration;
+            float progress = Mathf.Clamp01(timer / fadeDuration);
             currentColor.a = Mathf.Lerp(startAlpha, targetAlpha, progress);
             fadeScreen.color = currentColor;
-            yield return null; // Espera o próximo frame
+            yield return null; 
         }
 
-        currentColor.a = targetAlpha; // Garante que o alfa final seja exato
+        currentColor.a = targetAlpha;
         fadeScreen.color = currentColor;
     }
 
-    // NOVO: Corrotina para gerenciar a transição completa entre locais
+    // NOVO: Corrotina dedicada a clarear a tela (Fade In) de forma determinística.
+    private IEnumerator FadeIn() {
+        Color currentColor = fadeScreen.color;
+        float startAlpha = 1f; // MODIFICADO: Força o início a ser preto
+        float targetAlpha = 0f;
+        float timer = 0f;
+
+        while (timer < fadeDuration) {
+            timer += Time.deltaTime;
+            float progress = Mathf.Clamp01(timer / fadeDuration);
+            currentColor.a = Mathf.Lerp(startAlpha, targetAlpha, progress);
+            fadeScreen.color = currentColor;
+            yield return null;
+        }
+
+        currentColor.a = targetAlpha;
+        fadeScreen.color = currentColor;
+    }
+
+    // MODIFICADO: A rotina de transição agora usa as novas funções de FadeIn e FadeOut.
     private IEnumerator TransitionToLocal(int localIndex, bool isFirstLoad = false) {
-        // Se não for o primeiro carregamento, faz o fade out do local anterior
         if (!isFirstLoad) {
-            yield return StartCoroutine(FadeCoroutine(1f)); // Fade para preto
-            audioSource.Stop(); // Para a música antiga
+            yield return StartCoroutine(FadeOut()); // Usa a nova função
+            audioSource.Stop(); 
             if (locationVictorySound != null) audioSource.PlayOneShot(locationVictorySound, sfxVolume);
             yield return new WaitForSeconds(waitOnBlackScreenDelay);
         }
 
-        // Carrega os dados do novo local enquanto a tela está preta
         CarregarDadosDoLocal(localIndex);
 
-        // Fade in para o novo local
-        yield return StartCoroutine(FadeCoroutine(0f)); // Fade para transparente
+        // Para o primeiro carregamento, a tela já está transparente, então não precisa de fade in.
+        // Para os demais, a tela estará preta, então clareamos.
+        if (!isFirstLoad) {
+            yield return StartCoroutine(FadeIn()); // Usa a nova função
+        }
     }
-
 
     private IEnumerator HandleCorrectAnswer(Button correctButton)
     {
         correctButton.GetComponent<Image>().color = correctColor;
-        if(correctAnswerSound != null) audioSource.PlayOneShot(correctAnswerSound, sfxVolume); // MODIFICADO: usa volume de sfx
+        if(correctAnswerSound != null) audioSource.PlayOneShot(correctAnswerSound, sfxVolume); 
         
         yield return new WaitForSeconds(feedbackDelay);
 
         currentDesafioIndex++;
         if (currentDesafioIndex >= locais[currentLocalIndex].desafios.Count)
         {
-            // Lógica de vitória do local
             int proximoLocalIndex = (currentLocalIndex + 1) % locais.Count;
-            yield return StartCoroutine(TransitionToLocal(proximoLocalIndex)); // MODIFICADO: Chama a nova corrotina de transição
+            yield return StartCoroutine(TransitionToLocal(proximoLocalIndex)); 
         }
         else
         {
@@ -277,10 +301,9 @@ public class TourManager : MonoBehaviour
     private IEnumerator HandleIncorrectAnswer(Button incorrectButton)
     {
         incorrectButton.GetComponent<Image>().color = incorrectColor;
-        if(incorrectAnswerSound != null) audioSource.PlayOneShot(incorrectAnswerSound, sfxVolume); // MODIFICADO: usa volume de sfx
+        if(incorrectAnswerSound != null) audioSource.PlayOneShot(incorrectAnswerSound, sfxVolume);
         yield return new WaitForSeconds(feedbackDelay);
         
-        // Reativa os botões para nova tentativa
         for (int i = 0; i < locais[currentLocalIndex].desafios[currentDesafioIndex].answers.Count; i++)
         {
              answerButtons[i].GetComponent<Image>().color = normalColor;
