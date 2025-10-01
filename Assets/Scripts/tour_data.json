@@ -131,9 +131,9 @@
           "initialYRotation": 0,
           "questionText": "Quem construiu Machu Picchu?",
           "answers": [
-            "Asteca",
-            "Maia",
-            "Inca"
+            "Astecas",
+            "Maias",
+            "Incas"
           ],
           "correctAnswerIndex": 2
         },
