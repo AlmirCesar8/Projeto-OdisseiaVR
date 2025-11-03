@@ -3,6 +3,7 @@
     {
       "locationName": "Coliseu, Itália",
       "backgroundMusicPath": "Audio/trilhasonora_coliseu",
+      "mapImagePath": "UI/Mapas/mapa_coliseu",
       "desafios": [
         {
           "panoramaMaterialPath": "Materials/Coliseu/Coliseu01",
@@ -64,6 +65,7 @@
     {
       "locationName": "Acrópole, Grécia",
       "backgroundMusicPath": "Audio/trilhasonora_acropole",
+      "mapImagePath": "UI/Mapas/mapa_acropole",
       "desafios": [
         {
           "panoramaMaterialPath": "Materials/Acropole/Acropole01",
@@ -125,6 +127,7 @@
     {
       "locationName": "Machu Picchu, Peru",
       "backgroundMusicPath": "Audio/trilhasonora_machupicchu",
+      "mapImagePath": "UI/Mapas/mapa_machupicchu",
       "desafios": [
         {
           "panoramaMaterialPath": "Materials/MachuPicchu/MachuPicchu01",
@@ -178,6 +181,192 @@
             "Fortaleza militar",
             "Centro comercial",
             "Propriedade sagrada"
+          ],
+          "correctAnswerIndex": 2
+        }
+      ]
+    },
+    {
+      "locationName": "Galeria da Academia, Florença",
+      "backgroundMusicPath": "Audio/trilhasonora_florenca",
+      "mapImagePath": "UI/Mapas/mapa_florenca",
+      "desafios": [
+        {
+          "panoramaMaterialPath": "Materials/MuseuFlorenca/MuseuFlorenca01",
+          "initialYRotation": 0,
+          "questionText": "Quem é o escultor da obra \"David\" no acervo do museu?",
+          "answers": [
+            "Donatello",
+            "Michelangelo",
+            "Leonardo da Vinci"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuFlorenca/MuseuFlorenca02",
+          "initialYRotation": 0,
+          "questionText": "Qual o objetivo original da Galeria, fundada no século XVIII?",
+          "answers": [
+            "Abrigar a família Medici",
+            "Servir de centro de ensino para estudantes de arte",
+            "Ser uma catedral municipal"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuFlorenca/MuseuFlorenca03",
+          "initialYRotation": 0,
+          "questionText": "Qual peculiaridade da obra os \"Prisioneiros\"?",
+          "answers": [
+            "2 modificações",
+            "Incompletas",
+            "Cópias em gesso"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuFlorenca/MuseuFlorenca04",
+          "initialYRotation": 0,
+          "questionText": "Qual o motivo da transferência de \"David\" para a Galeria?",
+          "answers": [
+            "Facilitar o transporte",
+            "Proteger a obra",
+            "Copia-la"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuFlorenca/MuseuFlorenca05",
+          "initialYRotation": 0,
+          "questionText": "A estátua de David simboliza qual virtude na tradição cívica de Florença?",
+          "answers": [
+            "O poder militar",
+            "A riqueza do comércio",
+            "A força e a liberdade"
+          ],
+          "correctAnswerIndex": 2
+        }
+      ]
+    },
+    {
+      "locationName": "Museu do Ipiranga, Brasil",
+      "backgroundMusicPath": "Audio/trilhasonora_ipiranga",
+      "mapImagePath": "UI/Mapas/mapa_ipiranga",
+      "desafios": [
+        {
+          "panoramaMaterialPath": "Materials/MuseuIpiranga/MuseuIpiranga01",
+          "initialYRotation": 0,
+          "questionText": "O que o edifício-monumento do Museu do Ipiranga celebra?",
+          "answers": [
+            "Proclamação da República",
+            "Independência do Brasil",
+            "A Vinda da Família Real"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuIpiranga/MuseuIpiranga02",
+          "initialYRotation": 0,
+          "questionText": "Quem pintou a tela \"Independência ou Morte!\"?",
+          "answers": [
+            "Victor Meirelles",
+            "Di Cavalcanti",
+            "Pedro Américo"
+          ],
+          "correctAnswerIndex": 2
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuIpiranga/MuseuIpiranga03",
+          "initialYRotation": 0,
+          "questionText": "Quem tem seus restos mortais no Monumento da Independência?",
+          "answers": [
+            "Barão de Mauá",
+            "Dom Pedro I",
+            "Tiradentes"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuIpiranga/MuseuIpiranga04",
+          "initialYRotation": 0,
+          "questionText": "Qual é o foco do Museu em relação às narrativas históricas?",
+          "answers": [
+            "Focar apenas na elite",
+            "Incluir populações silenciadas",
+            "Focar apenas na natureza"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuIpiranga/MuseuIpiranga05",
+          "initialYRotation": 0,
+          "questionText": "Qual instituição acadêmica administra o Museu do Ipiranga?",
+          "answers": [
+            "UNESP",
+            "USP",
+            "UNICAMP"
+          ],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    {
+      "locationName": "Museu do Louvre, França",
+      "backgroundMusicPath": "Audio/trilhasonora_louvre",
+      "mapImagePath": "UI/Mapas/mapa_louvre",
+      "desafios": [
+        {
+          "panoramaMaterialPath": "Materials/MuseuLouvre/MuseuLouvre01",
+          "initialYRotation": 0,
+          "questionText": "Função original do prédio que hoje abriga o Louvre?",
+          "answers": [
+            "Teatro Real",
+            "Palácio Real",
+            "Sede do Governo"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuLouvre/MuseuLouvre02",
+          "initialYRotation": 0,
+          "questionText": "Qual é a obra de arte mais famosa do Louvre?",
+          "answers": [
+            "Vênus de Milo",
+            "A Liberdade Guia o Povo",
+            "Mona Lisa"
+          ],
+          "correctAnswerIndex": 2
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuLouvre/MuseuLouvre03",
+          "initialYRotation": 0,
+          "questionText": "A entrada principal do Louvre é marcada por qual estrutura moderna?",
+          "answers": [
+            "Arco do Triunfo",
+            "Pirâmide de Vidro",
+            "Obelisco Egípcio"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuLouvre/MuseuLouvre04",
+          "initialYRotation": 0,
+          "questionText": "A obra \"Vênus de Milo\" é um exemplo de escultura de qual período da arte?",
+          "answers": [
+            "Renascimento",
+            "Grécia Antiga",
+            "Arte Contemporânea"
+          ],
+          "correctAnswerIndex": 1
+        },
+        {
+          "panoramaMaterialPath": "Materials/MuseuLouvre/MuseuLouvre05",
+          "initialYRotation": 0,
+          "questionText": "Qual é o nome da deusa grega alada, uma escultura icônica do Louvre?",
+          "answers": [
+            "Atena",
+            "Artemis",
+            "Nike"
           ],
           "correctAnswerIndex": 2
         }
