@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Coliseu06
-  m_Shader: {fileID: 4800000, guid: fc5c32b886cf9a1499e73d7a31f2671a, type: 3}
+  m_Shader: {fileID: 4800000, guid: d2027caa1c2cd4b41bd2d0b51d22d8c4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
